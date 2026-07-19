@@ -1,0 +1,21 @@
+{
+    "name" : "django-recipe-site",
+    "image": "mcr.microsoft.com/devcontainers/python",
+    "postCreateCommand": "pip install -r requirements.txt",
+    "customizations": {
+		"vscode": {
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-toolsai.jupyter",
+                "batisteo.vscode-django",
+                "ms-azuretools.vscode-docker"
+			]
+		}
+	},
+	"containerEnv": {
+		"SHELL": "/bin/bash"
+	}
+}
