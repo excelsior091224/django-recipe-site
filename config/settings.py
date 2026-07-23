@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'recipe',
 
     'crispy_forms',
-    'crispy_bootstrap4'
+    'crispy_bootstrap4',
+    'imagekit',
 ]
 
 MIDDLEWARE = [
@@ -126,6 +127,9 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     BASE_DIR / Path("assets")
 ]
+
+MEDIA_ROOT = BASE_DIR / Path('media')
+MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 CRISPY_ALLOWED_TEMPLATE_PACKS = ['bootstrap4']

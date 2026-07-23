@@ -23,6 +23,8 @@ from recipe.views import (
     RecipeDeleteView  # 追加
 )
 from lib.views import IndexTemplateView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -30,4 +32,4 @@ urlpatterns = [
     path('recipe/', include("recipe.urls")),
 
     path('', IndexTemplateView.as_view(), name="index"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

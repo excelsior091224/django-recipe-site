@@ -1,5 +1,6 @@
 from django.db import models
-
+from imagekit.models import ImageSpecField  # === 追加 ===
+from imagekit.processors import ResizeToFill  # === 追加 ===
 # Create your models here.
 
 
@@ -8,6 +9,15 @@ class Recipe(models.Model):
     content = models.TextField(verbose_name="内容")
 
     description = models.TextField(blank=True, default="")
+
+    image = models.ImageField(upload_to="images/uploaded/", default=None, null=True, blank=True)
+
+    detail_main = ImageSpecField(
+        source="image",
+        processors=[ResizeToFill(640, 480)],
+        format="jpeg",
+        options={"quality": 80}
+    )
     
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
