@@ -11,6 +11,14 @@ from django.urls import reverse, reverse_lazy
 class RecipeListView(ListView):
     model = Recipe
 
+    def get_queryset(self):
+        qs = Recipe.objects.all()
+        keyword = self.request.GET.get("q")
+
+        if keyword:
+            qs = qs.filter(title__contains=keyword)
+
+        return qs
 
 class RecipeCreateView(CreateView):
     model = Recipe
