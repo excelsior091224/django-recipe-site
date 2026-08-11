@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'recipe',
     'comment',
+    'staffroom',
 
     'crispy_forms',
     'crispy_bootstrap4',
