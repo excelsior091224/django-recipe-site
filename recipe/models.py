@@ -2,6 +2,7 @@ from django.db import models
 from imagekit.models import ImageSpecField  # === 追加 ===
 from imagekit.processors import ResizeToFill  # === 追加 ===
 # Create your models here.
+from django.contrib.auth.models import User
 
 
 class Recipe(models.Model):
@@ -18,6 +19,8 @@ class Recipe(models.Model):
         format="jpeg",
         options={"quality": 80}
     )
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None, null=True)
     
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
