@@ -16,6 +16,7 @@ Including another URLconf
 """
 
 from django.contrib import admin
+from django.contrib.auth.views import LoginView, LogoutView  # === 追加 ===
 from django.urls import path, include
 from recipe.views import (
     RecipeListView, RecipeCreateView,
@@ -33,6 +34,10 @@ urlpatterns = [
 
     path('comment/', include("comment.urls", namespace="comment")),
     path('staffroom/', include("staffroom.urls", namespace="staffroom")),
+
+    path('login', LoginView.as_view(template_name="login.html"), name="login"),
+    path('logout', LogoutView.as_view(
+        template_name="logout.html"), name="logout"),
 
     path('', IndexTemplateView.as_view(), name="index"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

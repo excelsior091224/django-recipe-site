@@ -62,6 +62,10 @@
     </form>
   </div>
 </div>
+<!-- 省略 -->
+
+{% if request.user.is_authenticated and request.user == recipe.user %}
+<hr>
 <div class="row">
   <div class="col-lg-12">
     <a class="btn btn-info" href="{% url 'staffroom:recipe:update' recipe.id %}"
@@ -74,4 +78,6 @@
     >
   </div>
 </div>
+{% endif %}
+
 {% endblock %}
